@@ -1,17 +1,17 @@
+import { getHomePage } from "@/data/loaders";
+import { notFound } from "next/navigation";
+
 const loader = async () => {
-  const path = "/api/home-page";
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:1337";
-  const url = new URL(path, BASE_URL);
-  console.log(url);
-  const res = await fetch(url, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return { ...data.data };
+  const data = await getHomePage();
+  console.log("Raw API data:", data);
+  if (!data) notFound();
+  return data;
 };
 
 export default async function Home() {
   const data = await loader();
+
+  console.log(data, "data");
 
   return (
     <div>
