@@ -1,6 +1,7 @@
 import { StrapiImage } from "../StrapiImage";
 import Link from "next/link";
 import type { InfoBlockProps } from "@/types";
+import MarkdownRenderer from "../MarkdownRenderer";
 
 export function InfoBlock({
   reversed,
@@ -24,7 +25,11 @@ export function InfoBlock({
         </div>
         <div className="info__text w-[40%] flex flex-col items-center justify-center">
           <h2 className={`info__headline info__headline`}>{title}</h2>
-          <div>{description}</div>
+          {/* <div dangerouslySetInnerHTML={{ __html: description }}></div>
+          <pre>{JSON.stringify(description, null, 2)}</pre> */}
+          <div>
+            <MarkdownRenderer content={description} />
+          </div>
 
           {primaryCta && (
             <Link
