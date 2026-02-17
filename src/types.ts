@@ -93,8 +93,8 @@ export interface HeroSectionProps extends Base<"blocks.hero-section"> {
 export interface InfoBlockProps extends Base<"blocks.info-block"> {
   //   theme: "turquoise" | "orange";
   reversed?: boolean;
-  headline: string;
-  content: string;
+  title: string;
+  description: string;
   image: ImageProps;
   primaryCta?: LinkProps;
   secondaryCta?: LinkProps;
