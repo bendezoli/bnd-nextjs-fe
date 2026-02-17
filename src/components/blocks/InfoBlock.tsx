@@ -13,7 +13,7 @@ export function InfoBlock({
   return (
     <section className={`info  ${reversed && "info--reversed"}`}>
       <div
-        className={`info-block-wrapper flex gap-10 ${reversed ? "flex-row-reverse" : "flex-row"}`}
+        className={`info-block-wrapper flex justify-between ${reversed ? "flex-row-reverse" : "flex-row"}`}
       >
         <div className="relative w-[500px] h-[500px]">
           <StrapiImage
@@ -22,7 +22,7 @@ export function InfoBlock({
             className="info__image"
           />
         </div>
-        <div className="info__text">
+        <div className="info__text w-[40%] flex flex-col items-center justify-center">
           <h2 className={`info__headline info__headline`}>{title}</h2>
           <div>{description}</div>
 
