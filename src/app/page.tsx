@@ -17,6 +17,7 @@ export default async function Home() {
     <div>
       <main>
         {/* <pre>{JSON.stringify(blocks[0], null, 2)}</pre> */}
+
         <HeroSection {...blocks[0]} />
       </main>
     </div>

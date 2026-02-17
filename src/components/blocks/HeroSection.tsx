@@ -14,15 +14,13 @@ export function HeroSection({
   console.log(backgroundImage.url, "backgroundImage");
   return (
     <section className="hero">
-      <div className="hero__background">
+      <div className="hero__background relative w-full h-screen">
         <StrapiImage
           src={backgroundImage.url}
           alt={
             backgroundImage.alternativeText || "No alternative text provided"
           }
           className="hero__background-image"
-          width={1920}
-          height={1080}
         />
         {darken && <div className="hero__background__overlay"></div>}
       </div>

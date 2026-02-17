@@ -27,7 +27,7 @@ export function StrapiImage({
       alt={alt}
       className={className}
       {...rest}
-      sizes="100vw"
+      fill
       style={{ objectFit: "cover" }}
     />
   );
