@@ -46,8 +46,7 @@ export async function getHomePage() {
   const url = new URL(path, BASE_URL);
   url.search = homePageQuery;
 
-  console.log("Fetching from:", url.href);
   const response = await fetchAPI(url.href, { method: "GET" });
-  console.log("API Response:", response);
+
   return response;
 }
