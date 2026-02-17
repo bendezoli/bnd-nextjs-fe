@@ -1,5 +1,4 @@
-import { HeroSection } from "@/components/blocks/HeroSection";
-import { InfoBlock } from "@/components/blocks/InfoBlock";
+import { BlockRenderer } from "@/components/BlockRenderer";
 import { getHomePage } from "@/data/loaders";
 import { notFound } from "next/navigation";
 
@@ -17,10 +16,7 @@ export default async function Home() {
   return (
     <div>
       <main>
-        {/* <pre>{JSON.stringify(blocks[0], null, 2)}</pre> */}
-
-        <HeroSection {...blocks[0]} />
-        <InfoBlock {...blocks[1]} />
+        <BlockRenderer blocks={blocks} />
       </main>
     </div>
   );

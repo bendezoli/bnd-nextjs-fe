@@ -11,7 +11,6 @@ export function HeroSection({
   publishedAt,
   darken = false,
 }: Readonly<HeroSectionProps>) {
-  console.log(backgroundImage.url, "backgroundImage");
   return (
     <section className="hero">
       <div className="hero__background relative w-full h-screen">

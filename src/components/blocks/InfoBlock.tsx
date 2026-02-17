@@ -1,6 +1,5 @@
 import { StrapiImage } from "../StrapiImage";
 import Link from "next/link";
-
 import type { InfoBlockProps } from "@/types";
 
 export function InfoBlock({
@@ -11,7 +10,6 @@ export function InfoBlock({
   primaryCta,
   secondaryCta,
 }: Readonly<InfoBlockProps>) {
-  console.log(description, "description");
   return (
     <section className={`info  ${reversed && "info--reversed"}`}>
       <div className="info-block-wrapper flex gap-10">

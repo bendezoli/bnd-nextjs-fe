@@ -39,7 +39,6 @@ const homePageQuery = qs.stringify(
   },
   { arrayFormat: "comma" },
 );
-console.log("Constructed query string:", homePageQuery);
 
 export async function getHomePage() {
   const path = "/api/home-page";
