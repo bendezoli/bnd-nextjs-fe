@@ -24,13 +24,15 @@ const homePageQuery = qs.stringify(
               cta: true,
             },
           },
-          //   "blocks.info-block": {
-          //     populate: {
-          //       image: {
-          //         fields: ["url", "alternativeText"],
-          //       },
-          //     },
-          //   },
+          "blocks.info-block": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              primaryCta: true,
+              secondaryCta: true,
+            },
+          },
         },
       },
     },
