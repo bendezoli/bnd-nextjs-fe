@@ -81,9 +81,9 @@ export type Block =
   | FullImageProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
-//   theme: "turquoise" | "orange";
+  //   theme: "turquoise" | "orange";
   heading: string;
-  image: ImageProps;
+  backgroundImage: ImageProps;
   cta?: LinkProps;
   logo?: LogoProps;
   author?: string;
@@ -91,7 +91,7 @@ export interface HeroSectionProps extends Base<"blocks.hero-section"> {
 }
 
 export interface InfoBlockProps extends Base<"blocks.info-block"> {
-//   theme: "turquoise" | "orange";
+  //   theme: "turquoise" | "orange";
   reversed?: boolean;
   headline: string;
   content: string;
