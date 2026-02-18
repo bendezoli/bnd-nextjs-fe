@@ -17,6 +17,5 @@ function blockRenderer(block: Block, index: number) {
 }
 
 export function BlockRenderer(props: { blocks: Block[] }) {
-  console.log(props.blocks, "blocks in BlockRenderer");
   return props.blocks.map((block, index) => blockRenderer(block, index));
 }

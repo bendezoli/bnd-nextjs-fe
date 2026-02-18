@@ -63,7 +63,6 @@ const ModuleBase: React.FC<ModuleBaseProps> = ({
   classes.push(data?.moduleName || null);
 
   const Tag = hTag?.toLowerCase() || "section";
-  console.log(data?.backgroundColourClass);
 
   return React.createElement(Tag, {
     id: data?.anchor || undefined,

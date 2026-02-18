@@ -12,7 +12,7 @@
   --brand-secondary-fern: #8cb47d;
   --brand-secondary-sand: #c3b4aa;
   --brand-secondary-ocean: #739b9b;
-  --brand-secondary-powder: #87afbe;
+  --brand-secondary-powder: #54c5ee;
   --brand-secondary-plum: #696478;
   --brand-secondary-background: #fdfcfb;
   /*Tertiary colors*/
@@ -74,6 +74,9 @@ body {
 .link.link-primary {
   @apply text-brand-tertiary-sail bg-brand-primary-navy hover:bg-[#121C2C] active:bg-[#0A111D];
 }
+.link.link-primary.light {
+  @apply text-brand-primary-navy bg-white hover:bg-white/75 active:bg-white;
+}
 
 .link.link-primary.icon-arrow-right::after {
   content: "";
@@ -104,6 +107,9 @@ body {
 .link.link-secondary {
   @apply text-brand-primary-navy border border-brand-primary-navy/50 hover:border-brand-primary-navy active:border-brand-primary-navy;
 }
+.link.link-secondary.light {
+  @apply text-white border border-white/50 hover:border-white active:border-white;
+}
 
 .link.link-secondary.icon-arrow-right::after {
   content: "";
@@ -133,5 +139,5 @@ body {
   @apply bg-brand-primary-aveblue;
 }
 .oceanblue {
-  @apply bg-brand-secondary-ocean;
+  @apply bg-brand-secondary-powder;
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { InfoBlockProps } from "@/types";
 import MarkdownRenderer from "../MarkdownRenderer";
 import ModuleBase from "../ModulaBase";
+import { colorFromType, isThemeLight } from "@/utils/color-utils";
 
 export function InfoBlock({
   reversed,
@@ -14,6 +15,7 @@ export function InfoBlock({
   padding,
   backgroundColor,
 }: Readonly<InfoBlockProps>) {
+  console.log(isThemeLight(backgroundColor));
   return (
     <ModuleBase
       data={{
@@ -46,7 +48,10 @@ export function InfoBlock({
             </div>
           )}
 
-          <div className="info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-center justify-center mt-6 md:mt-0">
+          <div
+            className={`info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-center justify-center mt-6 md:mt-0`}
+            style={{ color: colorFromType(backgroundColor) }}
+          >
             <h2 className="info__headline  text-[32px] leading-[38px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px]">
               {title}
             </h2>
@@ -64,7 +69,9 @@ export function InfoBlock({
                   href={primaryCta.href}
                   target={primaryCta.isExternal ? "_blank" : "_self"}
                 >
-                  <button className="link link-primary">
+                  <button
+                    className={`link link-primary ${isThemeLight(backgroundColor)}`}
+                  >
                     {primaryCta.text}
                   </button>
                 </Link>
@@ -75,7 +82,9 @@ export function InfoBlock({
                   href={secondaryCta.href}
                   target={secondaryCta.isExternal ? "_blank" : "_self"}
                 >
-                  <button className="link link-secondary">
+                  <button
+                    className={`link link-secondary ${isThemeLight(backgroundColor)}`}
+                  >
                     {secondaryCta.text}
                   </button>
                 </Link>
