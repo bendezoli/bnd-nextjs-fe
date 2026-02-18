@@ -16,13 +16,15 @@ export function InfoBlock({
       <div
         className={`info-block-wrapper flex justify-between ${reversed ? "flex-row-reverse" : "flex-row"}`}
       >
-        <div className="relative w-[500px] h-[500px]">
-          <StrapiImage
-            src={image.url}
-            alt={image.alternativeText || "No alternative text provided"}
-            className="info__image"
-          />
-        </div>
+        {image && (
+          <div className="relative w-[500px] h-[500px]">
+            <StrapiImage
+              src={image.url}
+              alt={image.alternativeText || "No alternative text provided"}
+              className="info__image"
+            />
+          </div>
+        )}
         <div className="info__text w-[40%] flex flex-col items-center justify-center">
           <h2 className={`info__headline info__headline`}>{title}</h2>
           {/* <div dangerouslySetInnerHTML={{ __html: description }}></div>

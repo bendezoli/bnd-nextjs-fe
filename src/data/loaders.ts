@@ -40,12 +40,56 @@ const homePageQuery = qs.stringify(
   { arrayFormat: "comma" },
 );
 
+const pageBySlugQuery = (slug: string) =>
+  qs.stringify({
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {
+      blocks: {
+        on: {
+          "blocks.hero-section": {
+            populate: {
+              backgroundImage: {
+                fields: ["url", "alternativeText"],
+              },
+              logo: {
+                populate: {
+                  logo: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+              cta: true,
+            },
+          },
+          "blocks.info-block": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              primaryCta: true,
+              secondaryCta: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
 export async function getHomePage() {
   const path = "/api/home-page";
   const url = new URL(path, BASE_URL);
   url.search = homePageQuery;
-
   const response = await fetchAPI(url.href, { method: "GET" });
-
   return response;
+}
+
+export async function getPageBySlug(slug: string) {
+  const path = "/api/pages";
+  const url = new URL(path, BASE_URL);
+  url.search = pageBySlugQuery(slug);
+  return await fetchAPI(url.href, { method: "GET" });
 }
