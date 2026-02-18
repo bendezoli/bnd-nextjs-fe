@@ -12,6 +12,7 @@ export function InfoBlock({
   primaryCta,
   secondaryCta,
   padding,
+  backgroundColor,
 }: Readonly<InfoBlockProps>) {
   return (
     <ModuleBase
@@ -19,6 +20,7 @@ export function InfoBlock({
         moduleName: "info-block",
         paddingTop: padding,
         paddingBottom: padding,
+        backgroundColourClass: backgroundColor,
       }}
     >
       <div className={`info-block ${reversed && "info--reversed"}`}>

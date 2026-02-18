@@ -10,6 +10,7 @@ interface ModuleData {
   paddingBottom?: string;
   moduleName?: string;
   anchor?: string;
+  backgroundColourClass?: string;
 }
 
 interface ModuleBaseProps extends HTMLAttributes<HTMLElement> {
@@ -62,11 +63,12 @@ const ModuleBase: React.FC<ModuleBaseProps> = ({
   classes.push(data?.moduleName || null);
 
   const Tag = hTag?.toLowerCase() || "section";
+  console.log(data?.backgroundColourClass);
 
   return React.createElement(Tag, {
     id: data?.anchor || undefined,
     // style: { backgroundColor },
-    className: classnames(classes),
+    className: classnames(classes, data?.backgroundColourClass),
     ...props,
   });
 };

@@ -99,6 +99,7 @@ export interface InfoBlockProps extends Base<"blocks.info-block"> {
   primaryCta?: LinkProps;
   secondaryCta?: LinkProps;
   padding?: string;
+  backgroundColor?: string;
 }
 
 export interface FeaturedArticleProps extends Base<"blocks.featured-article"> {
