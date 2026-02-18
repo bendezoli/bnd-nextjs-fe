@@ -12,43 +12,62 @@ export function InfoBlock({
   secondaryCta,
 }: Readonly<InfoBlockProps>) {
   return (
-    <section className={`info  ${reversed && "info--reversed"}`}>
+    <section className={`info-block ${reversed && "info--reversed"}`}>
       <div
-        className={`info-block-wrapper flex justify-between ${reversed ? "flex-row-reverse" : "flex-row"}`}
+        className={`
+          info-block-wrapper 
+          container
+          flex 
+          flex-col 
+          lg:flex-row 
+          justify-between 
+          items-center
+          ${reversed ? "lg:flex-row-reverse" : ""}
+        `}
       >
         {image && (
-          <div className="relative w-[500px] h-[500px]">
+          <div className="relative w-[200px] h-[300px] md:w-[500px] md:h-[700px]">
             <StrapiImage
               src={image.url}
               alt={image.alternativeText || "No alternative text provided"}
-              className="info__image"
+              className="info__image object-cover w-full h-full"
             />
           </div>
         )}
-        <div className="info__text w-[40%] flex flex-col items-center justify-center">
-          <h2 className={`info__headline info__headline`}>{title}</h2>
-          {/* <div dangerouslySetInnerHTML={{ __html: description }}></div>
-          <pre>{JSON.stringify(description, null, 2)}</pre> */}
-          <div>
-            <MarkdownRenderer content={description} />
+
+        <div className="info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-center justify-center mt-6 md:mt-0">
+          <h2 className="info__headline  text-[32px] leading-[38px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px]">
+            {title}
+          </h2>
+
+          <div className="info__description my-10">
+            <MarkdownRenderer
+              content={description}
+              className="text-center text-4 leading-6"
+            />
           </div>
 
-          {primaryCta && (
-            <Link
-              href={primaryCta.href}
-              target={primaryCta.isExternal ? "_blank" : "_self"}
-            >
-              <button className={`btn btn--medium`}>{primaryCta.text}</button>
-            </Link>
-          )}
-          {secondaryCta && (
-            <Link
-              href={secondaryCta.href}
-              target={secondaryCta.isExternal ? "_blank" : "_self"}
-            >
-              <button className={`btn btn--medium`}>{secondaryCta.text}</button>
-            </Link>
-          )}
+          <div className="btn-wrapper flex gap-5">
+            {primaryCta && (
+              <Link
+                href={primaryCta.href}
+                target={primaryCta.isExternal ? "_blank" : "_self"}
+              >
+                <button className="link link-primary">{primaryCta.text}</button>
+              </Link>
+            )}
+
+            {secondaryCta && (
+              <Link
+                href={secondaryCta.href}
+                target={secondaryCta.isExternal ? "_blank" : "_self"}
+              >
+                <button className="link link-secondary">
+                  {secondaryCta.text}
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>

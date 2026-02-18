@@ -3,6 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /*Primary colors*/
+  --brand-primary-aveblue: #3c6982;
+  --brand-primary-navy: #1a263a;
+  --brand-primary-white: #ffffff;
+  --brand-primary-black: #000000;
+  /*Secondary colors*/
+  --brand-secondary-fern: #8cb47d;
+  --brand-secondary-sand: #c3b4aa;
+  --brand-secondary-ocean: #739b9b;
+  --brand-secondary-powder: #87afbe;
+  --brand-secondary-plum: #696478;
+  --brand-secondary-background: #fdfcfb;
+  /*Tertiary colors*/
+  --brand-tertiary-sail: #f5f0eb;
+  --brand-tertiary-charcoal: #5a646e;
+  --brand-tertiary-celery: #c8cd96;
+  --brand-tertiary-squash: #fadc91;
+  /* Additional colors */
+  --brand-additional-gold: #8b7641;
 }
 
 @theme inline {
@@ -10,6 +29,25 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /*Primary colors*/
+  --color-brand-primary-aveblue: var(--brand-primary-aveblue);
+  --color-brand-primary-navy: var(--brand-primary-navy);
+  --color-brand-primary-white: var(--brand-primary-white);
+  --color-brand-primary-black: var(--brand-primary-black);
+  /* Secondary colors */
+  --color-brand-secondary-fern: var(--brand-secondary-fern);
+  --color-brand-secondary-sand: var(--brand-secondary-sand);
+  --color-brand-secondary-ocean: var(--brand-secondary-ocean);
+  --color-brand-secondary-powder: var(--brand-secondary-powder);
+  --color-brand-secondary-plum: var(--brand-secondary-plum);
+  --color-brand-secondary-background: var(--brand-secondary-background);
+  /* Tertiarry colors */
+  --color-brand-tertiary-sail: var(--brand-tertiary-sail);
+  --color-brand-tertiary-charcoal: var(--brand-tertiary-charcoal);
+  --color-brand-tertiary-celery: var(--brand-tertiary-celery);
+  --color-brand-tertiary-squash: var(--brand-tertiary-squash);
+  /* Additional color */
+  --color-brand-additional-gold: var(--brand-additional-gold);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +61,70 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  @apply !max-w-[1512px] mx-auto px-4 sm:px-6 lg:px-[42px];
+}
+
+.link {
+  @apply relative h-11 rounded-[8px]  text-[14px] leading-4 tracking-[0.01px] py-4 px-6 inline-flex cursor-pointer gap-[2px] items-center justify-center uppercase transition-colors duration-200;
+}
+
+.link.link-primary {
+  @apply text-brand-tertiary-sail bg-brand-primary-navy hover:bg-[#121C2C] active:bg-[#0A111D];
+}
+
+.link.link-primary.icon-arrow-right::after {
+  content: "";
+  background-image: url("/svg/rightArrowLight.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-primary.icon-arrow-up::after {
+  content: "";
+  background-image: url("/svg/upArrowDark.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-primary.icon-arrow-down-light::after {
+  content: "";
+  background-image: url("/svg/downArrowLight.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-primary.icon-arrow-down-dark::after {
+  content: "";
+  background-image: url("/svg/downArrowDark.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+/* Secondary links */
+
+.link.link-secondary {
+  @apply text-brand-primary-navy border border-brand-primary-navy/50 hover:border-brand-primary-navy active:border-brand-primary-navy;
+}
+
+.link.link-secondary.icon-arrow-right::after {
+  content: "";
+  background-image: url("/svg/rightArrowDark.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-secondary.icon-arrow-up::after {
+  content: "";
+  background-image: url("/svg/upArrowDark.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-secondary.icon-arrow-down-light::after {
+  content: "";
+  background-image: url("/svg/downArrowLight.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
+}
+
+.link.link-secondary.icon-arrow-down-dark::after {
+  content: "";
+  background-image: url("/svg/downArrowDark.svg");
+  @apply relative inline-block w-4 h-4 ml-2 bg-contain bg-no-repeat bg-center;
 }
