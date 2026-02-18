@@ -14,7 +14,7 @@ export interface ImageProps {
 
 export interface LogoProps {
   logoText: string;
-  image: ImageProps;
+  logo: ImageProps;
 }
 
 export interface ArticleProps {
