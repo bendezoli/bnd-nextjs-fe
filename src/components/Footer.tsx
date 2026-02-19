@@ -17,7 +17,7 @@ export function Footer({ data }: FooterProps) {
   const { logo, navigation, policies, copy } = data;
 
   return (
-    <footer className="bg-brand-primary-aveblue text-white">
+    <footer className="bg-brand-primary-navy text-white">
       <div className="container mx-auto px-4 py-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:items-start">
           {/* Left side */}

@@ -31,7 +31,7 @@ export function Header({ data }: HeaderProps) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 bg-brand-primary-aveblue ${
+        className={`fixed top-0 left-0 w-full z-50 bg-brand-primary-navy ${
           headerLight ? "header--light" : ""
         }`}
       >
