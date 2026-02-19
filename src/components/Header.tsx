@@ -35,9 +35,9 @@ export function Header({ data }: HeaderProps) {
           headerLight ? "header--light" : ""
         }`}
       >
-        <div className="container mx-auto px-4 flex items-center justify-between h-[112px]">
+        <div className="container mx-auto px-4 flex items-center justify-between h-[60px] md:h-[112px]">
           {/* Logo */}
-          <div className="relative w-[80px] h-[80px]">
+          <div className="relative w-10 md:w-[80px] h-10 md:h-[80px]">
             <Link href="/">
               <StrapiImage
                 src={logo.logo.url}
@@ -64,7 +64,7 @@ export function Header({ data }: HeaderProps) {
             </ul>
 
             <Link href={cta.href} target={cta.isExternal ? "_blank" : "_self"}>
-              <button className="link link-primary">{cta.text}</button>
+              <button className="link link-primary light">{cta.text}</button>
             </Link>
           </div>
 
@@ -95,7 +95,7 @@ export function Header({ data }: HeaderProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-brand-primary-aveblue z-40 transform transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-brand-primary-navy z-40 transform transition-transform duration-300 lg:hidden ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -117,7 +117,7 @@ export function Header({ data }: HeaderProps) {
             target={cta.isExternal ? "_blank" : "_self"}
             onClick={() => setIsOpen(false)}
           >
-            <button className="link link-primary mt-4">{cta.text}</button>
+            <button className="link link-primary light mt-4">{cta.text}</button>
           </Link>
         </div>
       </div>
