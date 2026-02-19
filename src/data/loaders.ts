@@ -94,6 +94,19 @@ const globalSettingQuery = qs.stringify({
         cta: true,
       },
     },
+    footer: {
+      populate: {
+        logo: {
+          populate: {
+            logo: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        navigation: true,
+        policies: true,
+      },
+    },
   },
 });
 

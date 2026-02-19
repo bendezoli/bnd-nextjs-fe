@@ -36,7 +36,7 @@ const isDev = apiUrl.startsWith("http://localhost");
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    // dangerouslyAllowLocalIP: true,
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         protocol: isDev ? "http" : "https",

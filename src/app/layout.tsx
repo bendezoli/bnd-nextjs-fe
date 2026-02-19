@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { getGlobalSettings } from "@/data/loaders";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 async function loader() {
   const { data } = await getGlobalSettings();
   // if (!data) throw new Error("Failed to load global settings");
+  // console.log(data);
   return { header: data?.header, footer: data?.footer };
 }
 
@@ -30,7 +32,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { header } = await loader();
+  const { header, footer } = await loader();
   return (
     <html lang="en">
       <body
@@ -38,6 +40,7 @@ export default async function RootLayout({
       >
         <Header data={header} />
         {children}
+        <Footer data={footer} />
       </body>
     </html>
   );

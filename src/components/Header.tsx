@@ -1,4 +1,6 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { StrapiImage } from "../components/StrapiImage";
@@ -15,45 +17,110 @@ interface HeaderProps {
 export function Header({ data }: HeaderProps) {
   const pathname = usePathname();
   const headerLight = pathname === "/experience";
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   if (!data) return null;
 
   const { logo, navigation, cta } = data;
 
   return (
-    <header
-      className={`header fixed top-0 left-0 bg-brand-primary-aveblue flex itemes-center justify-around w-full z-10 ${headerLight ? "header--light" : ""}`}
-    >
-      <div className="relative w-full h-[80px] max-w-[80px]">
-        <Link href="/">
-          <StrapiImage
-            src={logo.logo.url}
-            alt={logo.logo.alternativeText || "No alternative text provided"}
-            className={`header__logo header__logo--${
-              headerLight ? "white" : "black"
-            }`}
-          />
-        </Link>
-      </div>
-      <ul className="flex gap-5 items-center">
-        {navigation.map((item, index) => (
-          <li key={index}>
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 bg-brand-primary-aveblue ${
+          headerLight ? "header--light" : ""
+        }`}
+      >
+        <div className="container mx-auto px-4 flex items-center justify-between h-[112px]">
+          {/* Logo */}
+          <div className="relative w-[80px] h-[80px]">
+            <Link href="/">
+              <StrapiImage
+                src={logo.logo.url}
+                alt={logo.logo.alternativeText || "Logo"}
+                className={`object-contain !relative`}
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            <ul className="flex gap-6 items-center">
+              {navigation.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href={item.href}
+                    target={item.isExternal ? "_blank" : "_self"}
+                    className="text-white uppercase hover:opacity-80 transition"
+                  >
+                    {item.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <Link href={cta.href} target={cta.isExternal ? "_blank" : "_self"}>
+              <button className="link link-primary">{cta.text}</button>
+            </Link>
+          </div>
+
+          {/* Hamburger Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden flex flex-col justify-center items-center gap-1 w-8 h-8"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                isOpen ? "rotate-45 translate-y-1.5" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                isOpen ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-brand-primary-aveblue z-40 transform transition-transform duration-300 lg:hidden ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-8 text-center">
+          {navigation.map((item, index) => (
             <Link
+              key={index}
               href={item.href}
               target={item.isExternal ? "_blank" : "_self"}
+              onClick={() => setIsOpen(false)}
+              className="text-white text-xl uppercase hover:opacity-80 transition"
             >
-              <div className="text-white uppercase">{item.text}</div>
+              {item.text}
             </Link>
-          </li>
-        ))}
-      </ul>
-      <Link
-        className="my-auto"
-        href={cta.href}
-        target={cta.isExternal ? "_blank" : "_self"}
-      >
-        <button className=" link link-primary">{cta.text}</button>
-      </Link>
-    </header>
+          ))}
+
+          <Link
+            href={cta.href}
+            target={cta.isExternal ? "_blank" : "_self"}
+            onClick={() => setIsOpen(false)}
+          >
+            <button className="link link-primary mt-4">{cta.text}</button>
+          </Link>
+        </div>
+      </div>
+    </>
   );
 }
