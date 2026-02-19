@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { StrapiImage } from "../components/StrapiImage";
@@ -18,11 +18,31 @@ export function Header({ data }: HeaderProps) {
   const pathname = usePathname();
   const headerLight = pathname === "/experience";
   const [isOpen, setIsOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
+
+  // Scroll hide/show logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+        // scrolling down
+        setShowHeader(false);
+      } else {
+        // scrolling up
+        setShowHeader(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (!data) return null;
 
@@ -31,9 +51,9 @@ export function Header({ data }: HeaderProps) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 bg-brand-primary-navy ${
+        className={`fixed top-0 left-0 w-full z-50 bg-brand-primary-navy transform transition-transform duration-700 ${
           headerLight ? "header--light" : ""
-        }`}
+        } ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between h-[60px] md:h-[112px]">
           {/* Logo */}
@@ -42,7 +62,7 @@ export function Header({ data }: HeaderProps) {
               <StrapiImage
                 src={logo.logo.url}
                 alt={logo.logo.alternativeText || "Logo"}
-                className={`object-contain !relative`}
+                className="object-contain !relative"
               />
             </Link>
           </div>
