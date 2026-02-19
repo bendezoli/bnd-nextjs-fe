@@ -50,7 +50,7 @@ export function InfoBlock({
           )}
 
           <div
-            className={`info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-center justify-center mt-6 md:mt-0`}
+            className={`info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-start justify-center mt-6 md:mt-0`}
             style={{ color: colorFromType(backgroundColor) }}
           >
             <HeadingTag
@@ -62,7 +62,7 @@ export function InfoBlock({
             <div className="info__description my-10">
               <MarkdownRenderer
                 content={description}
-                className=" text-4 leading-6"
+                className="rich-text text-4 leading-6"
               />
             </div>
 

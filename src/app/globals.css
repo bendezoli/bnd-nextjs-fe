@@ -145,9 +145,9 @@ body {
 }
 
 /* Richtext module */
-ol {
+.rich-text ol {
   @apply list-decimal pl-5;
 }
-ul {
+.rich-text ul {
   @apply list-disc pl-5;
 }
