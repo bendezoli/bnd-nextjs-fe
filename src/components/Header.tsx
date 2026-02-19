@@ -19,7 +19,7 @@ export function Header({ data }: HeaderProps) {
   if (!data) return null;
 
   const { logo, navigation, cta } = data;
-  console.log(navigation, "navigation");
+
   return (
     <header
       className={`header fixed top-0 left-0 bg-brand-primary-aveblue flex itemes-center justify-around w-full z-10 ${headerLight ? "header--light" : ""}`}
@@ -27,7 +27,6 @@ export function Header({ data }: HeaderProps) {
       <div className="relative w-full h-[80px] max-w-[80px]">
         <Link href="/">
           <StrapiImage
-            unoptimized
             src={logo.logo.url}
             alt={logo.logo.alternativeText || "No alternative text provided"}
             className={`header__logo header__logo--${

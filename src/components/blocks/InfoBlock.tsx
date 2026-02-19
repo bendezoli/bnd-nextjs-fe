@@ -15,7 +15,6 @@ export function InfoBlock({
   padding,
   backgroundColor,
 }: Readonly<InfoBlockProps>) {
-  console.log(isThemeLight(backgroundColor));
   return (
     <ModuleBase
       data={{

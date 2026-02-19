@@ -14,10 +14,11 @@ export function StrapiImage({
   className,
   ...rest
 }: Readonly<StrapiImageProps>) {
-  const imageUrl =
-    process.env.NODE_ENV === "development"
-      ? `/api/image-proxy?url=${encodeURIComponent(getStrapiMedia(src))}`
-      : getStrapiMedia(src);
+  // const imageUrl =
+  //   process.env.NODE_ENV === "development"
+  //     ? `/api/image-proxy?url=${encodeURIComponent(getStrapiMedia(src))}`
+  //     : getStrapiMedia(src);
+  const imageUrl = getStrapiMedia(src);
 
   if (!imageUrl) return null;
 

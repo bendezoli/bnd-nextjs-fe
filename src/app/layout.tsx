@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 };
 
 async function loader() {
-  console.log("Loading global settings...", getGlobalSettings());
   const { data } = await getGlobalSettings();
   // if (!data) throw new Error("Failed to load global settings");
   return { header: data?.header, footer: data?.footer };
