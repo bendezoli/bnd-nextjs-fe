@@ -62,7 +62,7 @@ export function InfoBlock({
             <div className="info__description my-10">
               <MarkdownRenderer
                 content={description}
-                className="text-center text-4 leading-6"
+                className=" text-4 leading-6"
               />
             </div>
 

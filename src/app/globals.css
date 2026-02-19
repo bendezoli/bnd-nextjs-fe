@@ -67,6 +67,8 @@ body {
   @apply !max-w-[1512px] mx-auto px-4 sm:px-6 lg:px-[42px];
 }
 
+/* Primary links */
+
 .link {
   @apply relative h-11 rounded-[8px]  text-[14px] leading-4 tracking-[0.01px] py-4 px-6 inline-flex cursor-pointer gap-[2px] items-center justify-center uppercase transition-colors duration-200;
 }
@@ -140,4 +142,12 @@ body {
 }
 .oceanblue {
   @apply bg-brand-secondary-powder;
+}
+
+/* Richtext module */
+ol {
+  @apply list-decimal pl-5;
+}
+ul {
+  @apply list-disc pl-5;
 }
