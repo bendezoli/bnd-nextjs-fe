@@ -4,6 +4,7 @@ import type { InfoBlockProps } from "@/types";
 import MarkdownRenderer from "../MarkdownRenderer";
 import ModuleBase from "../ModulaBase";
 import { colorFromType, isThemeLight } from "@/utils/color-utils";
+import HeadingTag from "../HeadingTag";
 
 export function InfoBlock({
   reversed,
@@ -14,6 +15,7 @@ export function InfoBlock({
   secondaryCta,
   padding,
   backgroundColor,
+  headingTag,
 }: Readonly<InfoBlockProps>) {
   return (
     <ModuleBase
@@ -51,9 +53,11 @@ export function InfoBlock({
             className={`info__text w-full md:w-[40%] lg:w-[60%] flex flex-col items-center justify-center mt-6 md:mt-0`}
             style={{ color: colorFromType(backgroundColor) }}
           >
-            <h2 className="info__headline  text-[32px] leading-[38px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px]">
-              {title}
-            </h2>
+            <HeadingTag
+              title={title}
+              htag={headingTag}
+              className="text-[32px] leading-[38px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px]"
+            />
 
             <div className="info__description my-10">
               <MarkdownRenderer

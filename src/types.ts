@@ -5,6 +5,11 @@ export interface LinkProps {
   isExternal: boolean;
 }
 
+export interface HeadingData {
+  htag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+  title?: string;
+}
+
 export interface ImageProps {
   id: number;
   documentId: string;
@@ -100,13 +105,16 @@ export interface InfoBlockProps extends Base<"blocks.info-block"> {
   secondaryCta?: LinkProps;
   padding?: string;
   backgroundColor?: string;
+  headingTag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 }
 
 export interface FeaturedArticleProps extends Base<"blocks.featured-article"> {
-  headline: string;
-  excerpt: string;
+  title: string;
+  description: string;
   link: LinkProps;
   image: ImageProps;
+  reversed?: boolean;
+  headingTag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 }
 
 export interface SubscribeProps extends Base<"blocks.subscribe"> {

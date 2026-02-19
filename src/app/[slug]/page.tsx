@@ -19,5 +19,5 @@ export default async function DynamicPageRoute({ params }: PageProps) {
   const { blocks } = await loader(slug);
 
   return <BlockRenderer blocks={blocks} />;
-  return <pre>{JSON.stringify(blocks, null, 2)}</pre>;
+  // return <pre>{JSON.stringify(blocks, null, 2)}</pre>;
 }

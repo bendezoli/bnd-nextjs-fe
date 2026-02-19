@@ -74,6 +74,17 @@ const pageBySlugQuery = (slug: string) =>
               secondaryCta: true,
             },
           },
+          "blocks.featured-article": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              link: true,
+            },
+          },
+          "blocks.subscribe": {
+            populate: true,
+          },
         },
       },
     },
