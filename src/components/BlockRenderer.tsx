@@ -3,6 +3,7 @@ import type { Block } from "@/types";
 import { HeroSection } from "@/components/blocks/HeroSection";
 import { InfoBlock } from "@/components/blocks/InfoBlock";
 import { FeaturedArticle } from "@/components/blocks/FeaturedArticle";
+import { Subscribe } from "./blocks/Subscribe";
 
 function blockRenderer(block: Block, index: number) {
   // console.log(block, "block in blockRenderer", index, "index");
@@ -14,6 +15,8 @@ function blockRenderer(block: Block, index: number) {
       return <InfoBlock {...block} key={index} />;
     case "blocks.featured-article":
       return <FeaturedArticle {...block} key={index} />;
+    case "blocks.subscribe":
+      return <Subscribe {...block} key={index} />;
     default:
       return null;
   }

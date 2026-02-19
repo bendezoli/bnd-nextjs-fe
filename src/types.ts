@@ -115,6 +115,8 @@ export interface FeaturedArticleProps extends Base<"blocks.featured-article"> {
   image: ImageProps;
   reversed?: boolean;
   headingTag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+  padding?: string;
+  backgroundColor?: string;
 }
 
 export interface SubscribeProps extends Base<"blocks.subscribe"> {
@@ -122,6 +124,9 @@ export interface SubscribeProps extends Base<"blocks.subscribe"> {
   content: string;
   placeholder: string;
   buttonText: string;
+  headingTag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+  padding?: string;
+  backgroundColor?: string;
 }
 
 export interface HeadingProps extends Base<"blocks.heading"> {

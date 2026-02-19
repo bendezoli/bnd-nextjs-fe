@@ -1,5 +1,5 @@
 export function getDarkColor(): string {
-  return "#000000";
+  return "#1a263a";
 }
 
 export function getLightColor(): string {
