@@ -2,7 +2,7 @@ import React from "react";
 import type { HeadingData } from "@/types";
 
 interface HeadingProps extends HeadingData {
-  className?: string; // lehetővé teszi kívülről a CSS osztály átadását
+  className?: string;
 }
 
 const HeadingTag: React.FC<HeadingProps> = ({
