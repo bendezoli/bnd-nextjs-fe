@@ -28,7 +28,9 @@ export function Subscribe({
   );
 
   const zodErrors = state?.zodErrors?.email;
-  const strapiErrors = state?.strapiErrors;
+  const strapiErrors = state?.strapiErrors?.message;
+
+  console.log(strapiErrors, "strapi errors from state");
 
   const errorMessage = state?.errorMessage || strapiErrors || zodErrors;
   const successMessage = state?.successMessage;
