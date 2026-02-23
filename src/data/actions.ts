@@ -34,7 +34,7 @@ export async function subscribeAction(prevState: any, formData: FormData) {
     return {
       ...prevState,
       zodErrors: null,
-      strapiErrors: respoonseData.error,
+      strapiErrors: null,
       errorMessage:
         "Ops! SOmething went wrong while connecting to the subscription service. Please try again later.",
     };
