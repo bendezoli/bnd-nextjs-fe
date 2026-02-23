@@ -30,13 +30,10 @@ export function Subscribe({
   const zodErrors = state?.zodErrors?.email;
   const strapiErrors = state?.strapiErrors?.message;
 
-  console.log(strapiErrors, "strapi errors from state");
+  // console.log(strapiErrors, "strapi errors from state");
 
-  const errorMessage = state?.errorMessage || strapiErrors || zodErrors;
+  const errorMessage = strapiErrors || zodErrors || state?.errorMessage;
   const successMessage = state?.successMessage;
-
-  console.log(errorMessage, "error message from state");
-  console.log(successMessage, "success message from state");
 
   return (
     <ModuleBase
