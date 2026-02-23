@@ -4,6 +4,14 @@ import HeadingTag from "../HeadingTag";
 import ModuleBase from "../ModulaBase";
 import { colorFromType, isThemeLight } from "@/utils/color-utils";
 import { subscribeAction } from "@/data/actions";
+import { useActionState } from "react";
+
+const INITIAL_STATE = {
+  zodErrors: null,
+  strapiErrors: null,
+  erroMessage: null,
+  successMessage: null,
+};
 
 export function Subscribe({
   headline,
@@ -14,6 +22,20 @@ export function Subscribe({
   padding,
   backgroundColor,
 }: Readonly<SubscribeProps>) {
+  const [state, formAction, isPending] = useActionState(
+    subscribeAction,
+    INITIAL_STATE,
+  );
+
+  const zodErrors = state?.zodErrors?.email;
+  const strapiErrors = state?.strapiErrors;
+
+  const errorMessage = state?.errorMessage || strapiErrors || zodErrors;
+  const successMessage = state?.successMessage;
+
+  console.log(errorMessage, "error message from state");
+  console.log(successMessage, "success message from state");
+
   return (
     <ModuleBase
       data={{
@@ -38,17 +60,17 @@ export function Subscribe({
 
         <form
           className="newsletter__form flex flex-col sm:flex-row gap-4 md:w-1/2"
-          action={subscribeAction}
+          action={formAction}
         >
           <input
             name="email"
             type="text"
-            placeholder={placeholder}
-            className={`newsletter__email outline-0 w-full sm:flex-1 px-4 py-3  rounded-md ${isThemeLight(backgroundColor) === "light" ? "bg-white text-black" : "bg-gray-800 text-white"}`}
+            placeholder={errorMessage || successMessage || placeholder}
+            className={`newsletter__email outline-0 w-full sm:flex-1 px-4 py-3 ${successMessage ? "text-green-900 font-bold border border-green-900" : ""} ${errorMessage ? "border font-bold border-red-500 text-red-500" : ""}  rounded-md ${isThemeLight(backgroundColor) === "light" ? "bg-white text-black" : "bg-gray-800 text-white"}`}
           />
           <button
             type="submit"
-            className={`link link-primary ${isThemeLight(backgroundColor)}`}
+            className={`link link-primary ${isPending ? "opacity-50 cursor-not-allowed" : ""} ${isThemeLight(backgroundColor) === "light" ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-blue-800 hover:bg-blue-900 text-white"}`}
           >
             {buttonText}
           </button>
