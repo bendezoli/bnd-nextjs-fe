@@ -36,15 +36,16 @@ export function InfoBlock({
           lg:flex-row 
           justify-between 
           items-center
+          gap-10
           ${reversed ? "lg:flex-row-reverse" : ""}
         `}
         >
           {image && (
-            <div className="relative w-[200px] h-[300px] md:w-[500px] md:h-[700px]">
+            <div className="group relative w-[200px] h-[300px] md:w-[500px] md:h-[700px] overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.35)]">
               <StrapiImage
                 src={image.url}
                 alt={image.alternativeText || "No alternative text provided"}
-                className="info__image object-cover w-full h-full"
+                className="info__image object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
           )}
