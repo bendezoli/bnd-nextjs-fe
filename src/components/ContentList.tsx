@@ -30,11 +30,13 @@ export async function ContentList({
   // console.log("Using component:", Component);
   // console.log("Path:", path);
   return (
-    <div className="content-items container ">
-      <div className={`content-items__headline ${headlineAlignment ?? ""}`}>
+    <div className="content-items container my-10">
+      <div
+        className={`content-items__headline text-2xl md:text-4xl font-bold feature-title-wrapper mb-10 ${headlineAlignment ?? ""}`}
+      >
         {headline || "Featured Articles"}
       </div>
-      <div className="content-items__container--card grid grid-cols-3 gap-6">
+      <div className="content-items__container--card grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         {articles.map((article) => (
           <Component key={article.documentId} {...article} basePath={path} />
         ))}
