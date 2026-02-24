@@ -10,8 +10,8 @@ interface ContentListProps {
   headlineAlignment?: "center" | "right" | "left";
 }
 
-async function loader(path: string) {
-  const { data, meta } = await getContent(path);
+async function loader(path: string, featured?: boolean) {
+  const { data, meta } = await getContent(path, featured);
   return {
     articles: (data as ArticleProps[]) || [],
   };
@@ -22,8 +22,9 @@ export async function ContentList({
   path,
   component,
   headlineAlignment,
+  featured,
 }: Readonly<ContentListProps>) {
-  const { articles } = await loader(path);
+  const { articles } = await loader(path, featured);
   const Component = component;
   // console.log("ContentList loaded with articles:", articles);
   // console.log("Using component:", Component);

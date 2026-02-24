@@ -2,7 +2,7 @@ import { getPageBySlug } from "@/data/loaders";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { ContentList } from "@/components/ContentList";
-import { Card, type CardProps } from "@/components/Card";
+import { BlogCards } from "@/components/BlogCards";
 
 async function loader(slug: string) {
   console.log("Loading page with slug:", slug);
@@ -11,10 +11,6 @@ async function loader(slug: string) {
   if (data.length === 0) notFound();
   return { blocks: data[0]?.blocks ?? [] };
 }
-
-const BlogCard = (props: Readonly<CardProps>) => (
-  <Card {...props} basePath="blog" />
-);
 
 export default async function BlogRoute() {
   const { blocks } = await loader("blog");
@@ -26,7 +22,7 @@ export default async function BlogRoute() {
         <ContentList
           headline="Latest Articles"
           path="api/articles"
-          component={BlogCard}
+          component={BlogCards}
         />
       </div>
     </div>
