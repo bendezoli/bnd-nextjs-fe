@@ -10,9 +10,7 @@ const subscribeSchema = z.object({
 });
 
 export async function subscribeAction(prevState: any, formData: FormData) {
-  console.log("Our first server action");
   const email = formData.get("email");
-  console.log(email, "Our email input from form");
 
   const validatedFields = subscribeSchema.safeParse({
     email: formData.get("email"),
