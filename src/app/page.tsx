@@ -2,7 +2,7 @@ import { BlockRenderer } from "@/components/BlockRenderer";
 import { getHomePage } from "@/data/loaders";
 import { notFound } from "next/navigation";
 import { ContentList } from "@/components/ContentList";
-import { BlogCards } from "@/components/BlogCards";
+import { BlogCards } from "@/components/cards/BlogCards";
 
 const loader = async () => {
   const data = await getHomePage();

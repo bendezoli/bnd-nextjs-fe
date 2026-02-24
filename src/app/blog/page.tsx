@@ -2,7 +2,7 @@ import { getPageBySlug } from "@/data/loaders";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { ContentList } from "@/components/ContentList";
-import { BlogCards } from "@/components/BlogCards";
+import { BlogCards } from "@/components/cards/BlogCards";
 
 async function loader(slug: string) {
   console.log("Loading page with slug:", slug);
