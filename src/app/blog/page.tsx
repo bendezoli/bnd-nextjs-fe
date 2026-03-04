@@ -16,7 +16,9 @@ interface PageProps {
 }
 
 export default async function BlogRoute({ searchParams }: PageProps) {
+  // console.log("BlogRoute received searchParams:", await searchParams);
   const { page, query } = await searchParams;
+
   const { blocks } = await loader("blog");
 
   return (
@@ -30,6 +32,7 @@ export default async function BlogRoute({ searchParams }: PageProps) {
           showSearch
           query={query}
           showPagination
+          page={page}
         />
       </div>
     </div>

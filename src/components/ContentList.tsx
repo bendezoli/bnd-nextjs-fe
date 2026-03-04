@@ -15,10 +15,16 @@ interface ContentListProps {
   showPagination?: boolean;
 }
 
-async function loader(path: string, featured?: boolean, query?: string) {
-  const { data, meta } = await getContent(path, featured, query);
+async function loader(
+  path: string,
+  featured?: boolean,
+  query?: string,
+  page?: string,
+) {
+  const { data, meta } = await getContent(path, featured, query, page);
   return {
     articles: (data as ArticleProps[]) || [],
+    pageCount: meta?.pagination?.pageCount || 1,
   };
 }
 
@@ -31,12 +37,16 @@ export async function ContentList({
   showSearch,
   query,
   showPagination,
+  page,
 }: Readonly<ContentListProps>) {
-  const { articles } = await loader(path, featured, query);
+  const { articles, pageCount } = await loader(path, featured, query, page);
   const Component = component;
+  // console.log(await loader(path, featured, query, page), "await loader result");
   // console.log("ContentList loaded with articles:", articles);
   // console.log("Using component:", Component);
   // console.log("Path:", path);
+  // console.log("page", page);
+
   return (
     <div className="content-items container my-10">
       <div
@@ -50,7 +60,7 @@ export async function ContentList({
           <Component key={article.documentId} {...article} basePath={path} />
         ))}
       </div>
-      {showPagination && <PaginationComponent pageCount={10} />}
+      {showPagination && <PaginationComponent pageCount={pageCount} />}
     </div>
   );
 }

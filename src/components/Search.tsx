@@ -29,7 +29,7 @@ export function Search({ backgroundColor = "blue" }: SearchProps) {
   }, 300);
 
   return (
-    <div className="searche">
+    <div className="search">
       <div className="search w-full md:w-1/2">
         <input
           type="text"
