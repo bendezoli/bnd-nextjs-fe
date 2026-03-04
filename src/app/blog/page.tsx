@@ -19,6 +19,8 @@ export default async function BlogRoute({ searchParams }: PageProps) {
   // console.log("BlogRoute received searchParams:", await searchParams);
   const { page, query } = await searchParams;
 
+  // console.log("BlogRoute page:", page, "query:", query);
+
   const { blocks } = await loader("blog");
 
   return (
