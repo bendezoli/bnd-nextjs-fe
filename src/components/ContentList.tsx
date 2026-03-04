@@ -22,6 +22,10 @@ async function loader(
   page?: string,
 ) {
   const { data, meta } = await getContent(path, featured, query, page);
+  // console.log(
+  //   await getContent(path, featured, query, page),
+  //   "await getContent(path, featured, query, page)",
+  // );
   return {
     articles: (data as ArticleProps[]) || [],
     pageCount: meta?.pagination?.pageCount || 1,
