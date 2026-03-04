@@ -18,8 +18,7 @@ interface PageProps {
 export default async function BlogRoute({ searchParams }: PageProps) {
   const { page, query } = await searchParams;
   const { blocks } = await loader("blog");
-  console.log(page, "page");
-  console.log(query, "query");
+
   return (
     <div className="blog-page">
       <BlockRenderer blocks={blocks} />
@@ -30,6 +29,7 @@ export default async function BlogRoute({ searchParams }: PageProps) {
           component={BlogCards}
           showSearch
           query={query}
+          showPagination
         />
       </div>
     </div>
